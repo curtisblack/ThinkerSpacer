@@ -22,3 +22,7 @@ while True:
     delay(1000)
 ```
 
+## Limitations
+The Raspberry Pi GPIO pins operate at 3.3V, therefore shields must also be 3.3V compatible. If the shield uses the IOREF pin to determine logic voltage this should be ok however some shields may require 5V logic which may result in incorrect functioning or damage to the Raspbery Pi.
+The analog inputs A0-7 can only be used as inputs, not outputs (digital or analog).
+Software PWM is supported on all digital outputs. Hardware PWM is not available so shields which require high precision IO may not function correctly.
