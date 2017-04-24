@@ -7,6 +7,7 @@ This is a python module to allow the use of Arduino shields using the ThinkerSpa
 
 Once you import the library the functions mostly follow the Arduino API.
 
+### Blink an LED
 ```python
 from ThinkerSpacer import *
 
