@@ -14,6 +14,10 @@ ledPin = D13
 
 pinMode(ledPin, OUTPUT)
 
-digitalWrite(ledPin, HIGH)
+while True:
+    digitalWrite(ledPin, HIGH)
+    delay(1000)
+    digitalWrite(ledPin, LOW)
+    delay(1000)
 ```
 
