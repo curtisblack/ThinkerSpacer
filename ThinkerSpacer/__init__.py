@@ -1,4 +1,4 @@
-﻿import RPi.GPIO as _GPIO
+import RPi.GPIO as _GPIO
 import time as _time
 
 _GPIO.setmode(_GPIO.BCM)
@@ -172,7 +172,7 @@ def digitalWrite(pin, value):
 def digitalRead(pin):
     if pin in _analogPins:
         return analogRead(pin) > 1023 / 2
-    else if pin in _digitalPins:
+    elif pin in _digitalPins:
         return _GPIO.input(pin)
     else:
         raise ValueError("pin must be one of the digital or analog pins.")
