@@ -178,6 +178,8 @@ def digitalRead(pin):
         raise ValueError("pin must be one of the digital or analog pins.")
 
 def tone(pin, frequency, duration=None):
+    if frequency <= 0:
+        raise ValueError("frequency must be a positive number")
     if pin in _outputs:
         _outputs[pin].ChangeDutyCycle(50)
         _outputs[pin].ChangeFrequency(frequency)

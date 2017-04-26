@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -27,15 +27,19 @@ pinMode(pot, INPUT)
 pinMode(ldr, INPUT)
 
 while True:
-    ledState = ((millis() / 1000) % 2) == 0
+    flashDuration = analogRead(pot) + 1 # add 1 so we don't ever divide by zero
+    ledState = ((millis() / flashDuration) % 2) == 0
+
     digitalWrite(led1, ledState)
     digitalWrite(led2, ledState)
     digitalWrite(led3, ledState)
     digitalWrite(led4, ledState)
     digitalWrite(led5, ledState)
     digitalWrite(led6, ledState)
+
     if digitalRead(button):
-        tone(buzzer, 262)
+        frequency = map(analogRead(ldr), 0, 1023, 20, 2000)
+        tone(buzzer, frequency)
     else:
         noTone(buzzer)
                     
