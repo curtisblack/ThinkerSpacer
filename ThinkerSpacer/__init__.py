@@ -36,16 +36,24 @@ D13 = 21
 _digitalPins = [D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13]
 
 # Analog Input
-A0 = 0 # D14
-A1 = 1 # D15
-A2 = 2 # D16
-A3 = 3 # D17
-A4 = 4 # D18
-A5 = 5 # D19
-A6 = 6 # D4
-A7 = 7 # D6
+A0 = 30 # D14
+A1 = 31 # D15
+A2 = 32 # D16
+A3 = 33 # D17
+A4 = 34 # D18
+A5 = 35 # D19
+A6 = 36 # D4
+A7 = 37 # D6
 
 _analogPins = [A0, A1, A2, A3, A4, A5, A6, A7]
+_analogChannels = {A0: 0,
+                   A1: 1,
+                   A2: 2,
+                   A3: 3,
+                   A4: 4,
+                   A5: 5,
+                   A6: 6,
+                   A7: 7 }
 
 # ADC
 _CLK = 24
@@ -106,12 +114,14 @@ def pinMode(pin, mode):
             _outputs.pop(pin)
         _GPIO.setup(pin, _GPIO.IN, pull_up_down = _GPIO.PUD_UP)
 
-def analogRead(adcnum):
+def analogRead(pin):
     # read SPI data from MCP3008 chip,
     # 8 possible adc's (0 thru 7)
 
-    if not _isAnalogInput(adcnum):
+    if not _isAnalogInput(pin):
         raise ValueError("analogRead() is only supported for analog input pins A0-7.")
+
+    adcnum = _analogChannels[pin]
 
     _GPIO.output(_SPICS, True)
 
@@ -160,7 +170,12 @@ def digitalWrite(pin, value):
         raise ValueError("Initialise pin with pinMode() before using digitalWrite().")
 
 def digitalRead(pin):
-    return _GPIO.input(pin)
+    if pin in _analogPins:
+        return analogRead(pin) > 1023 / 2
+    else if pin in _digitalPins:
+        return _GPIO.input(pin)
+    else:
+        raise ValueError("pin must be one of the digital or analog pins.")
 
 def tone(pin, frequency, duration=None):
     if pin in _outputs:
