@@ -1,4 +1,4 @@
-import RPi.GPIO as _GPIO
+﻿import RPi.GPIO as _GPIO
 import time as _time
 
 _GPIO.setmode(_GPIO.BCM)
@@ -111,7 +111,8 @@ def analogRead(adcnum):
     # 8 possible adc's (0 thru 7)
 
     if not _isAnalogInput(adcnum):
-        return -1
+        raise ValueError("analogRead() is only supported for analog input pins A0-7.")
+
     _GPIO.output(_SPICS, True)
 
     _GPIO.output(_SPICLK, False)  # start clock low
