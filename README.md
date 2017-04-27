@@ -37,4 +37,4 @@ Hardware PWM is not available so shields which require high precision IO may not
 | Shield          | Notes |
 | --------------- | ----- |
 | ThinkerShield   | 100%  |
-| Joystick Shield | No. The joystick is connected to 5V wich is too much for the analog inputs. |
+| Joystick Shield | No. The joystick is connected to 5V which is too much for the analog inputs. |
