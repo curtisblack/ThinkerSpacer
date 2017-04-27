@@ -1,6 +1,9 @@
-﻿import os
+import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+# This is a sample script for controlling
+# the components on the ThinkerShield
 
 from ThinkerSpacer import *
 
