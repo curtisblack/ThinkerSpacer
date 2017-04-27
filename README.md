@@ -31,3 +31,9 @@ Inbuilt pull-up resistors are available on the digital IO pins (using INPUT_PULL
 
 Software PWM is supported on all digital outputs.
 Hardware PWM is not available so shields which require high precision IO may not function correctly.
+
+## Shield Compatability
+
+| Shield                   | Notes |
+| ThinkerShield            |       |
+| Sparkfun Joystick Shield |       |
