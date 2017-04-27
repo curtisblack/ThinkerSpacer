@@ -46,14 +46,14 @@ A6 = 36 # D4
 A7 = 37 # D6
 
 _analogPins = [A0, A1, A2, A3, A4, A5, A6, A7]
-_analogChannels = {A0: 0,
-                   A1: 1,
-                   A2: 2,
-                   A3: 3,
-                   A4: 4,
-                   A5: 5,
-                   A6: 6,
-                   A7: 7 }
+_analogChannels = { A0: 0,
+                    A1: 1,
+                    A2: 2,
+                    A3: 3,
+                    A4: 4,
+                    A5: 5,
+                    A6: 6,
+                    A7: 7 }
 
 # ADC
 _CLK = 24
@@ -146,10 +146,10 @@ def analogRead(pin):
         _GPIO.output(_SPICLK, True)
         _GPIO.output(_SPICLK, False)
         adcout <<= 1
-        if (_GPIO.input(_SPIMSIO)):
+        if (_GPIO.input(_SPIMISO)):
             adcout |= 0x1
  
-    _GPIO.output(SPICS, True)
+    _GPIO.output(_SPICS, True)
         
     adcout >>= 1       # first bit is 'null' so drop it
     return adcout
