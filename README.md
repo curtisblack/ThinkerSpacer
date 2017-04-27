@@ -35,5 +35,6 @@ Hardware PWM is not available so shields which require high precision IO may not
 ## Shield Compatability
 
 | Shield                   | Notes |
+| ------------------------ | ----- |
 | ThinkerShield            |       |
 | Sparkfun Joystick Shield |       |
