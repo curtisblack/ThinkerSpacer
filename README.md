@@ -34,7 +34,7 @@ Hardware PWM is not available so shields which require high precision IO may not
 
 ## Shield Compatability
 
-| Shield                   | Notes |
-| ------------------------ | ----- |
-| ThinkerShield            |       |
-| Sparkfun Joystick Shield |       |
+| Shield          | Notes |
+| --------------- | ----- |
+| ThinkerShield   | 100%  |
+| Joystick Shield | No. The joystick is connected to 5V wich is too much for the analog inputs. |
