@@ -30,15 +30,23 @@ pinMode(pot, INPUT)
 pinMode(ldr, INPUT)
 
 while True:
-    flashDuration = analogRead(pot) + 1 # add 1 so we don't ever divide by zero
-    ledState = ((millis() / flashDuration) % 2) == 0
-
-    digitalWrite(led1, ledState)
-    digitalWrite(led2, ledState)
-    digitalWrite(led3, ledState)
-    digitalWrite(led4, ledState)
-    digitalWrite(led5, ledState)
-    digitalWrite(led6, ledState)
+    delay(analogRead(pot))
+    
+    digitalWrite(led1, HIGH)
+    digitalWrite(led2, HIGH)
+    digitalWrite(led3, HIGH)
+    digitalWrite(led4, HIGH)
+    digitalWrite(led5, HIGH)
+    digitalWrite(led6, HIGH)
+    
+    delay(analogRead(pot))
+    
+    digitalWrite(led1, LOW)
+    digitalWrite(led2, LOW)
+    digitalWrite(led3, LOW)
+    digitalWrite(led4, LOW)
+    digitalWrite(led5, LOW)
+    digitalWrite(led6, LOW)
 
     if digitalRead(button):
         frequency = map(analogRead(ldr), 0, 1023, 20, 2000)
